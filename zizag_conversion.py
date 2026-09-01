@@ -10,13 +10,13 @@ class Solution:
         # Loop through each letter. Run a check on where to append
         # Loop through each mat and append letter
         while i < n:
-            # Down operation. Starts at mat[0] and works its way down, imcrementing index
+            # Down operation. Starts at mat[0] and works its way down. i is incremented
             # 0: []
             # 1: []
             # 2: []
             # 3: []
             # 4: []
-            # Operation stops when reached the last index
+            # Operation stops when i == n
             # Queue next for statement below
             for down in range(numRows):
                 if i < n:

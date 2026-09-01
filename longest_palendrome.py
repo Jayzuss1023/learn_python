@@ -1,6 +1,9 @@
 class Solution:
     def longestPalindrome(self, s: str):
         # Values passed in are in index values from the loop
+        # Left value will decrease
+        # Right value will increase
+        # While loops with statements to continue the process
         def expand(l, r):
             while l >= 0 and r < len(s) and s[l] == s[r]:
                 l -= 1
