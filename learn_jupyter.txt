@@ -1,0 +1,73 @@
+##### Create a scatter plot using the variables `per_capita_income_` and `hardship_index`. Explain the correlation between the two variables.
+
+<details><summary>Click here for the solution</summary>
+
+```python
+# if the import command gives ModuleNotFoundError: No module named 'seaborn'
+# then uncomment the following line i.e. delete the # to install the seaborn package 
+# !pip install seaborn
+
+!pip install matplotlib seaborn
+income_vs_hardship = %sql SELECT per_capita_income_, hardship_index FROM chicago_socioeconomic_data;
+plot = sns.jointplot(x='per_capita_income_',y='hardship_index', data=income_vs_hardship.DataFrame())
+
+
+Correct answer:You can see that as Per Capita Income rises as the Hardship Index decreases. We see that the points on the scatter plot are somewhat closer to a straight line in the negative direction, so we have a negative correlation between the two variables. 
+    
+```
+
+</details>
+
+---------------------------------------------------------------------------------------------------------
+
+Syntax:  df.to_sql('table_name', index=False)
+
+Description: df.to_sql() is a method in Pandas, a Python data manipulation library used to write the contents of a DataFrame to a SQL database. 
+It allows to take data from a DataFrame and store it structurally within a SQL database
+
+EXAMPLE:
+import pandas
+df = pandas.read_csv('https://data.cityofchicago.org/resource/jcxq-k9xf.csv')
+df.to_sql("chicago_socioeconomic_data", con, if_exists='replace', index=False,method="multi")
+
+read_sql()
+Syntax:  df = pd.read_sql(sql_query, conn)
+
+Description: read_sql() is a function provided by the Pandas library in Python for executing SQL queries and retrieving the results into a DataFrame from an SQL database. 
+It's a convenient way to integrate SQL database interactions into your data analysis workflows.
+EXAMPLE:
+selectQuery = "select * from INSTRUCTOR"
+df = pandas.read_sql(selectQuery, conn)
+
+---------------------------------------------------------------------------------------------------------
+connect()
+Syntax:  conn = ibm_db.connect('DATABASE=dbname; HOST=hostname;PORT=port;UID=username; PWD=password;', '', '')
+
+Description: ibm_db.connect() is a Python function provided by the ibm_db library, which is used for establishing a connection to an IBM Db2 or IBM Db2 Warehouse database. 
+It's commonly used in applications that need to interact with IBM Db2 databases from Python.
+
+---------------------------------------------------------------------------------------------------------
+
+read_csv()
+Syntax:   df = pd.read_csv('file_path.csv') 
+
+Description: read_csv() is a function in Python's Pandas library used for reading data from a Comma-Separated Values (CSV) file and loading it into a Pandas DataFrame. 
+It's a common method for working with tabular data stored in CSV format
+
+EXAMPLE:
+import pandas
+df = pandas.read_csv('https://data.cityofchicago.org/resource/jcxq-k9xf.csv')
+
+---------------------------------------------------------------------------------------------------------
+
+exec_immediate()
+Syntax:  sql_statement = "SQL statement goes here"
+stmt = ibm_db.exec_immediate(conn, sql_statement)
+
+Description: ibm_db.exec_immediate() is a Python function provided by the ibm_db library, which is used to execute an SQL statement immediately without the need to prepare or bind it. 
+It's commonly used for executing SQL statements that don't require input parameters or don't need to be prepared in advance.
+
+EXAMPLE:
+# Lets first drop the table INSTRUCTOR in case it exists from a previous attempt.
+dropQuery = "drop table INSTRUCTOR"
+dropStmt = ibm_db.exec_immediate(conn, dropQuery)

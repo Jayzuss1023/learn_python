@@ -1,3 +1,6 @@
+# locate the index of 1 bits from a binary representation of a number
+# Append the number of bits found and their indexes to a list with the number of bits at the start of the list
+
 def Counting_bits(number: int):
     binary = str(bin(number))
     length = len(binary)
